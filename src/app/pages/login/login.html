@@ -1,0 +1,59 @@
+<div class="signup-wrapper">
+  <mat-card class="signup-card">
+
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+      <mat-card-subtitle>Welcome back</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="submit()" class="signup-form">
+
+        <!-- Email -->
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="username">
+
+          <mat-error NgIf="
+            loginForm.get('email')?.invalid &&
+            (loginForm.get('email')?.touched || loginForm.get('email')?.dirty)
+          ">
+            <span NgIf="loginForm.get('email')?.hasError('required')">
+              Email is required
+            </span>
+            <span NgIf="loginForm.get('email')?.hasError('email')">
+              Enter a valid email
+            </span>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Password -->
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+
+          <mat-error NgIf="
+            loginForm.get('password')?.invalid &&
+            (loginForm.get('password')?.touched || loginForm.get('password')?.dirty)
+          ">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+
+        <!-- Button -->
+        <button
+          mat-raised-button
+          color="primary"
+          class="signup-btn"
+          type="submit">
+          Login
+        </button>
+       
+
+<p><b>Admin:</b> admin / admin123</p>
+<p><b>User:</b> user / user123</p>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</div>

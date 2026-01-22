@@ -1,0 +1,40 @@
+<div class="booking-container">
+
+  <h2>Train Booking</h2>
+
+  <div NgIf="train">
+    <p><b>Train:</b> {{ train.trainName }}</p>
+    <p><b>Route:</b> {{ train.source }} → {{ train.destination }}</p>
+    <p><b>Available Seats:</b> {{ train.totalSeats }}</p>
+
+    <label>Seats to Book</label>
+    <input type="number" [(ngModel)]="seats" min="1">
+
+    <div class="actions">
+      <button (click)="proceed()">Proceed</button>
+      <button class="cancel" (click)="cancel()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION -->
+ <div class="overlay" NgIf="showConfirmPopup">
+  <div class="popup">
+
+    <h3>Confirm Booking</h3>
+
+    <p>Train: <b>{{ train.trainName }}</b></p>
+    <p>Seats: <b>{{ seats }}</b></p>
+
+    <p class="warning">
+      Are you sure you want to confirm this booking?
+    </p>
+
+    <div class="actions">
+      <button (click)="confirmBooking()">Yes, Confirm</button>
+      <button class="cancel" (click)="showConfirmPopup = false">
+        No
+      </button>
+    </div>
+
+  </div>
+</div>

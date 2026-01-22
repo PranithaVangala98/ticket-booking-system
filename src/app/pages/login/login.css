@@ -1,0 +1,85 @@
+/* Full-page center with soft gradient */
+.signup-wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+}
+
+/* Card styling */
+.signup-card {
+  width: 380px;
+  padding: 20px 18px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+mat-card-header {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+mat-card-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+mat-card-subtitle {
+  font-size: 14px;
+  color: #757575;
+}
+
+/* Form layout */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* Button */
+.signup-btn {
+  height: 44px;
+  border-radius: 24px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-top: 8px;
+  box-shadow: 0 6px 14px rgba(63, 81, 181, 0.35);
+  transition: all 0.3s ease;
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(63, 81, 181, 0.45);
+}
+
+/* Disabled button */
+.signup-btn[disabled] {
+  box-shadow: none;
+  transform: none;
+}
+
+/* Forgot password link */
+.forgot-link {
+  text-align: right;
+  font-size: 13px;
+  color: #3f51b5;
+  cursor: pointer;
+  margin-top: -8px;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .signup-card {
+    width: 90%;
+  }
+}

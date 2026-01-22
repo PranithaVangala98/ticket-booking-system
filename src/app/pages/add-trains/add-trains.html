@@ -1,0 +1,91 @@
+<div class="container">
+  <h2>Add New Train</h2>
+
+  <form [formGroup]="trainForm" (ngSubmit)="addTrain()" >
+
+    <div class="row">
+      <label>Train Name</label>
+      <input type="text" formControlName="trainName" placeholder="Eg: Rajdhani Express">
+      <!-- <small NgIf="trainForm.get('trainName')?.touched && trainForm.get('trainName')?.invalid">
+        Train name is required
+      </small> -->
+    </div>
+
+    <div class="row">
+      <label>Train Number</label>
+      <input type="text" formControlName="trainNumber" placeholder="Eg: 12951">
+    </div>
+
+    <div class="grid">
+      <div class="row">
+        <label>Source</label>
+        <input type="text" formControlName="source" placeholder="Hyderabad">
+      </div>
+
+      <div class="row">
+        <label>Destination</label>
+        <input type="text" formControlName="destination" placeholder="Delhi">
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="row">
+        <label>Departure Time</label>
+        <input type="time" formControlName="departureTime">
+      </div>
+
+      <div class="row">
+        <label>Arrival Time</label>
+        <input type="time" formControlName="arrivalTime">
+      </div>
+    </div>
+
+    <div class="row">
+      <label>Total Seats</label>
+      <input type="number" formControlName="totalSeats" placeholder="Eg: 300">
+    </div>
+
+    <button type="submit" [disabled]="trainForm.invalid">
+      ➕ Add Train
+    </button>
+
+  </form>
+
+   <!-- <h3 class="table-title">Added Trains</h3>
+
+  <table NgIf="trains.length > 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Number</th>
+        <th>Route</th>
+        <th>Time</th>
+        <th>Seats</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+  <tbody>
+  @for (train of trains; track $index) {
+    <tr>
+      <td>{{ $index + 1 }}</td>
+      <td>{{ train.trainName }}</td>
+      <td>{{ train.trainNumber }}</td>
+      <td>{{ train.source }} → {{ train.destination }}</td>
+      <td>{{ train.departureTime }} - {{ train.arrivalTime }}</td>
+      <td>{{ train.totalSeats }}</td>
+      <td>
+        <button class="delete" (click)="deleteTrain(train.id)">❌</button>
+      </td>
+    </tr>
+  }
+</tbody>
+  </table>
+
+  <p NgIf="trains.length === 0" class="no-data">
+    No trains added yet
+  </p> -->
+</div>
+
+

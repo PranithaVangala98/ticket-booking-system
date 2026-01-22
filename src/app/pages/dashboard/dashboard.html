@@ -1,0 +1,110 @@
+<div class="dashboard">
+
+  <h2>Passenger Dashboard</h2>
+
+  <!-- SEARCH BAR -->
+  <div class="search-box">
+    <input
+      type="text"
+      placeholder="Source"
+      [(ngModel)]="source"
+    />
+
+    <input
+      type="text"
+      placeholder="Destination"
+      [(ngModel)]="destination"
+    />
+
+    <button (click)="searchTrains()">Search</button>
+    <button class="clear" (click)="clearSearch()">Clear</button>
+  </div>
+
+  <!-- TRAIN TABLE -->
+  <table NgIf="filteredTrains.length > 0">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Train Name</th>
+        <th>Train No</th>
+        <th>Route</th>
+        <th>Time</th>
+        <th>Seats</th>
+        <th>Booking</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        @for (train of filteredTrains; track $index) {
+      <tr >
+        <td>{{ $index + 1 }}</td>
+        <td>{{ train.trainName }}</td>
+        <td>{{ train.trainNumber }}</td>
+        <td>{{ train.source }} → {{ train.destination }}</td>
+        <td>{{ train.departureTime }} - {{ train.arrivalTime }}</td>
+        <td>{{ train.totalSeats }}</td>
+        <td>
+    <button (click)="bookTrain(train.id)">Book</button>
+        </td>
+      </tr>
+    }
+   
+  </table>
+
+  <p NgIf="filteredTrains.length === 0" class="no-data">
+    No trains found
+  </p>
+  </div>
+
+<div class="overlay" NgIf="selectedTrain">
+  @if (selectedTrain) {
+  <div class="gateway">
+
+    <h3>Train Booking</h3>
+
+   <p><b>Train:</b> {{ selectedTrain.trainName }}</p>
+    <p><b>Route:</b> {{ selectedTrain.source }} → {{ selectedTrain.destination }}</p>
+    <p><b>Available Seats:</b> {{ selectedTrain.totalSeats }}</p>
+
+
+
+    <label>Seats to Book</label>
+    <input type="number" min="1" [(ngModel)]="seats">
+
+    <div class="actions">
+      <button (click)="proceedToConfirm()">Proceed</button>
+      <button class="cancel" (click)="cancelBooking()">Cancel</button>
+    </div>
+
+  </div>
+  }
+</div>
+
+<!-- CONFIRMATION SCREEN -->
+<div class="overlay" NgIf="showConfirm">
+  @if(selectedTrain){
+  <div class="gateway">
+
+     <h3>Confirm Booking</h3>
+
+    <p>Train: <b>{{ selectedTrain.trainName }}</b></p>
+    <p>Seats: <b>{{ seats }}</b></p>
+
+    <p class="warning">Are you sure you want to confirm this booking?</p>
+
+    <div class="actions">
+      <button (click)="confirmBooking()">Yes, Confirm</button>
+      <button class="cancel" (click)="showConfirm = false">No</button>
+    </div>
+
+
+ 
+
+  </div>
+}
+</div>
+
+
+
+
+
