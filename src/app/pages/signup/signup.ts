@@ -34,12 +34,13 @@ import { CommonModule } from '@angular/common';
 export class Signup {
   username = '';
   password = '';
-  role = 'passenger'; // default
+  number = '';
+  email = '';
 
   constructor(private router: Router) {}
 
   register() {
-    if (!this.username || !this.password || !this.role) {
+    if (!this.username || !this.password || !this.number) {
       alert('All fields are required');
       return;
     }
@@ -56,7 +57,7 @@ export class Signup {
     users.push({
       username: this.username,
       password: this.password,
-      role: this.role,
+      number: this.number,
     });
 
     localStorage.setItem('users', JSON.stringify(users));

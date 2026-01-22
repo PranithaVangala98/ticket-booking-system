@@ -11,10 +11,15 @@
       </small> -->
     </div>
 
-    <div class="row">
-      <label>Train Number</label>
-      <input type="text" formControlName="trainNumber" placeholder="Eg: 12951">
-    </div>
+   <div class="row">
+  <label>Train Number</label>
+  <input type="text" formControlName="trainNumber">
+
+  <small *ngIf="trainForm.get('trainNumber')?.errors?.['trainNumberExists']">
+    🚫 Train number already exists
+  </small>
+</div>
+
 
     <div class="grid">
       <div class="row">
@@ -44,6 +49,28 @@
       <label>Total Seats</label>
       <input type="number" formControlName="totalSeats" placeholder="Eg: 300">
     </div>
+    <!-- <h3>Coaches</h3>
+
+<div formArrayName="coaches">
+  <div *ngFor="let coach of coaches.controls; let i = index"
+       [formGroupName]="i" class="grid">
+
+    <select formControlName="coachType">
+      <option value="">Select Coach</option>
+      <option *ngFor="let type of coachTypes" [value]="type">
+        {{ type }}
+      </option>
+    </select>
+
+    <input type="number" formControlName="price" placeholder="Price">
+    <input type="number" formControlName="availableSeats" placeholder="Available Seats">
+
+    <button type="button" (click)="removeCoach(i)">❌</button>
+  </div>
+</div>
+
+<button type="button" (click)="addCoach()">➕ Add Coach</button> -->
+
 
     <button type="submit" [disabled]="trainForm.invalid">
       ➕ Add Train
@@ -51,41 +78,7 @@
 
   </form>
 
-   <!-- <h3 class="table-title">Added Trains</h3>
-
-  <table NgIf="trains.length > 0">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Number</th>
-        <th>Route</th>
-        <th>Time</th>
-        <th>Seats</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-
-  <tbody>
-  @for (train of trains; track $index) {
-    <tr>
-      <td>{{ $index + 1 }}</td>
-      <td>{{ train.trainName }}</td>
-      <td>{{ train.trainNumber }}</td>
-      <td>{{ train.source }} → {{ train.destination }}</td>
-      <td>{{ train.departureTime }} - {{ train.arrivalTime }}</td>
-      <td>{{ train.totalSeats }}</td>
-      <td>
-        <button class="delete" (click)="deleteTrain(train.id)">❌</button>
-      </td>
-    </tr>
-  }
-</tbody>
-  </table>
-
-  <p NgIf="trains.length === 0" class="no-data">
-    No trains added yet
-  </p> -->
+ 
 </div>
 
 

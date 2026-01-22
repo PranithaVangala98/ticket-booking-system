@@ -9,9 +9,9 @@
     <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="submit()" class="signup-form">
 
-        <!-- Email -->
+      
         <mat-form-field appearance="outline">
-          <mat-label>Email</mat-label>
+          <mat-label>User name</mat-label>
           <input matInput type="email" formControlName="username">
 
           <mat-error NgIf="
@@ -22,7 +22,7 @@
               Email is required
             </span>
             <span NgIf="loginForm.get('email')?.hasError('email')">
-              Enter a valid email
+              Enter a valid username
             </span>
           </mat-error>
         </mat-form-field>
@@ -47,6 +47,13 @@
           class="signup-btn"
           type="submit">
           Login
+        </button>
+         <button
+          mat-raised-button
+          color="primary"
+          class="signup-btn"
+          (click)="navigateToSignupPage()">
+          Register
         </button>
        
 

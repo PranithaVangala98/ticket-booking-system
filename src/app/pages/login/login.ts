@@ -56,7 +56,7 @@ export class Login {
     else if (role === 'passenger') this.router.navigate(['/passenger']);
     else alert('Invalid credentials');
   }
-  navigateToSignup() {
+  navigateToSignupPage() {
     this.router.navigate(['/signup']);
   }
 }

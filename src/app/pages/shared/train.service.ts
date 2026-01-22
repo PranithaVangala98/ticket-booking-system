@@ -23,4 +23,8 @@ export class TrainService {
   clearTrains(): void {
     localStorage.removeItem(this.key);
   }
+
+  isTrainNumberExists(trainNumber: string): boolean {
+    return this.getTrains().some((t) => t.trainNumber === trainNumber);
+  }
 }
